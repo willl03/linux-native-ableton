@@ -1,4 +1,40 @@
 # Ableton Live 12 on Linux
+
+## This Fork
+
+A personal fork of <a href="https://github.com/velkajelka/linux-native-ableton">velkajelka/linux-native-ableton</a>.
+I add fixes and improvements as I encounter them, and will keep doing so. 
+Releases follow <code>w03-v1.0x</code>.
+
+- **Max for Live device views** — every editor sits exactly on its device's frame and
+  follows the chain through scrolling, track changes, zoom (below 60 % too) and window
+  changes · partly visible views clip with their frame instead of floating over the
+  neighbour · hidden in Clip view, back with Device view
+- **Push hardware** — Push 2 and Push 3 work on the desktop build, pads, display and
+  LEDs included · devices survive disconnecting and reconnecting
+- **Audio** — Live's ALSA ring is lifted above one PipeWire cycle, so a large quantum no
+  longer turns into an XRUN storm · `LIVE_ALSA_*` settings for device, format, channels
+  and ring · `LIVE_AUDIO_THREADS` caps the worker threads Live starts
+- **Browser** — the device catalog is completed, so Instruments, Audio Effects, MIDI
+  Effects, Modulators and Max for Live are listed · Max devices and MIDI tools are
+  copied where Live indexes them
+- **Desktop polish** — native menu bar · Qt file dialogs, also on Wayland · mixed-scale
+  monitors · `.auz` authorization files · themes: drop any `.ask` into `themes/` and the
+  installer installs it, Catppuccin Mocha and Latte included
+- **After a crash** — the launcher clears Live's stale instance files, so the browser no
+  longer comes back read-only with drag-and-drop disabled
+
+<p align="center">
+  <a href="https://github.com/willl03/linux-native-ableton/releases/latest">
+    <img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png?raw=true" alt="Download from GitHub" height="75">
+  </a>
+</p>
+
+> **Note:** the shim targets Live 12.4.7 from the Push 3 2.4.7 image. On another build
+> its fixes stay off rather than guess.
+
+*The rest of this README documents this build, including this fork's changes.*
+
 ![Project in Live](LiveDemo.png)
 
 <br>
@@ -43,14 +79,14 @@ You do not need to install `innoextract`. The installer brings its own (see [inn
 2. Clone this repository into a folder.
 
    ```sh
-   git clone https://github.com/velkajelka/linux-native-ableton.git
+   git clone https://github.com/willl03/linux-native-ableton.git
    cd linux-native-ableton
    ```
 
    Or without git:
 
    ```sh
-   curl -L -o linux-native-ableton.zip https://github.com/velkajelka/linux-native-ableton/archive/refs/heads/main.zip
+   curl -L -o linux-native-ableton.zip https://github.com/willl03/linux-native-ableton/archive/refs/heads/main.zip
    unzip linux-native-ableton.zip
    cd linux-native-ableton-main
    ```
